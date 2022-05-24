@@ -10,6 +10,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Button } from "@mui/material";
+import "./css/Sidebar.css";
 
 export const Sidebar: FC = () => {
 	return (
