@@ -1,0 +1,25 @@
+.sidebarOption {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	margin-bottom: 30px;
+	transition: color 0.15s ease-out;
+	margin-left: 20px;
+}
+
+.sidebarOption:hover {
+	background-color: #e8f5fe;
+	border-radius: 30px;
+	color: var(--twitter-color);
+}
+
+/* MuiScgIcon-rootとするとmaterialIconにCSSを充てられる */
+.sidebarOption > .MuiSvgIcon-root {
+	padding-right: 20px;
+}
+
+.sidebarOption > h2 {
+	font-size: 20px;
+	margin-right: 20px;
+	font-weight: 800;
+}

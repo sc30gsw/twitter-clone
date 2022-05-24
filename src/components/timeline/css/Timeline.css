@@ -1,0 +1,25 @@
+.timeline {
+	flex: 0.45;
+	border-right: 1px solid var(--twitter-background);
+	/* 投稿情報をY軸(縦)方向にスクロールできるようにする */
+	overflow-y: scroll;
+}
+
+/* スクロールバーにCSSを充てる */
+.timeline::-webkit-scrollbar {
+	display: none;
+}
+
+.timeline_header {
+	position: sticky;
+	top: 0;
+	background-color: white;
+	z-index: 100;
+	border: 1px solid var(--twitter-background);
+	padding: 5px 20px;
+}
+
+.timeline_header > h2 {
+	font-size: 20px;
+	font-weight: 800;
+}
