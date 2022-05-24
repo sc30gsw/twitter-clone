@@ -5,12 +5,16 @@
 }
 
 .post_avatar {
-	padding: 10px 20px 20px;
+	padding: 10px 15px 15px;
 }
 
 .post_body {
 	flex: 1;
-	padding: 10px;
+}
+
+p {
+	margin: 0;
+	padding: 0;
 }
 
 .post_headerText > h3 {
