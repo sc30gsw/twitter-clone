@@ -14,6 +14,7 @@
 
 .widgets_input > input {
 	border: none;
+	outline: none;
 	background-color: var(--twitter-background);
 }
 
@@ -24,7 +25,7 @@
 .widgets_widgetContainer {
 	margin-top: 15px;
 	margin-left: 20px;
-	padding: 20px;
+	padding: 10px 20px 20px;
 	background-color: #f5f8fa;
 	border-radius: 20px;
 }

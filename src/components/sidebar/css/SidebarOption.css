@@ -4,6 +4,7 @@
 	cursor: pointer;
 	margin-bottom: 30px;
 	transition: color 0.15s ease-out;
+	margin-left: 20px;
 }
 
 .sidebarOption:hover {

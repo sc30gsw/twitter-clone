@@ -29,7 +29,8 @@ export const Sidebar: FC = () => {
 			<SidebarOption text="もっとみる" Icon={MoreHorizIcon} />
 
 			{/* ツイートボタン */}
-			<Button variant="outlined" className="sidebar_tweet">
+			{/* fullWidth: 親要素に対して100%の幅となる */}
+			<Button variant="outlined" className="sidebar_tweet" fullWidth>
 				ツイートする
 			</Button>
 		</div>
