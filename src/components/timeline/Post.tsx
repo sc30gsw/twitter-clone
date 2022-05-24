@@ -30,7 +30,7 @@ export const Post = () => {
 						<p>Reactなう。</p>
 					</div>
 				</div>
-				<img src="https://source.unsplash.com/random" />
+				<img src="https://source.unsplash.com/random" alt="画像" />
 				<div className="post_footer">
 					{/* コメントアイコン */}
 					<ChatBubbleOutline fontSize="small" />
