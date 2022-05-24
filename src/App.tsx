@@ -1,5 +1,11 @@
+import { FC } from "react";
 import "./App.css";
+import { Sidebar } from "./components/sidebar/Sidebar";
 
-export const App = () => {
-	return <div className="App"></div>;
+export const App: FC = () => {
+	return (
+		<div className="App">
+			<Sidebar />
+		</div>
+	);
 };
