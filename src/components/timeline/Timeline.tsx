@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./css/Timeline.css";
 import { Post } from "./Post";
 import { TweetBox } from "./TweetBox";
@@ -6,15 +6,20 @@ import { db } from "../../firebase";
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 
 export const Timeline: FC = () => {
+	// 投稿情報を管理するState
 	const [posts, setPosts] = useState<DocumentData[]>([]);
 
-	// dbからpostsテーブルのデータを取得
-	const postData = collection(db, "posts");
-	// querySnapshot内にデータ情報が格納されている
-	// querySnapshot.docsにpostsに格納されているデータをJSONオブジェクト形式で取得できる
-	getDocs(postData).then((querySnapshot) => {
-		setPosts(querySnapshot.docs.map((doc) => doc.data()));
-	});
+	// マウント(DB接続)時のみデータを取得する
+	useEffect(() => {
+		// dbからpostsテーブルのデータを取得
+		const postData = collection(db, "posts");
+		// querySnapshot内にデータ情報が格納されている
+		// querySnapshot.docsにpostsに格納されているデータをJSONオブジェクト形式で取得できる
+		getDocs(postData).then((querySnapshot) => {
+			setPosts(querySnapshot.docs.map((doc) => doc.data()));
+		});
+		console.log("aaa");
+	}, []);
 
 	return (
 		<div className="timeline">
