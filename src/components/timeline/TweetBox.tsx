@@ -1,8 +1,8 @@
 import { Avatar, Button } from "@mui/material";
-import React from "react";
+import React, { FC } from "react";
 import "./css/TweetBox.css";
 
-export const TweetBox = () => {
+export const TweetBox: FC = () => {
 	return (
 		<div className="tweetBox">
 			<form>
