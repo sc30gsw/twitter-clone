@@ -2,8 +2,18 @@ import React, { FC } from "react";
 import "./css/Timeline.css";
 import { Post } from "./Post";
 import { TweetBox } from "./TweetBox";
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 export const Timeline: FC = () => {
+	// dbからpostsテーブルのデータを取得
+	const postData = collection(db, "posts");
+	// querySnapshot内にデータ情報が格納されている
+	// querySnapshot.docsにpostsに格納されているデータをJSONオブジェクト形式で取得できる
+	getDocs(postData).then((querySnapshot) => {
+		console.log(querySnapshot.docs.map((doc) => doc.data()));
+	});
+
 	return (
 		<div className="timeline">
 			{/* ヘッダー */}
