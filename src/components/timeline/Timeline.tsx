@@ -4,6 +4,7 @@ import { Post } from "./Post";
 import { TweetBox } from "./TweetBox";
 import { db } from "../../firebase";
 import { collection, DocumentData, getDocs } from "firebase/firestore";
+import { v4 as uuid } from "uuid";
 
 export const Timeline: FC = () => {
 	// 投稿情報を管理するState
@@ -18,7 +19,6 @@ export const Timeline: FC = () => {
 		getDocs(postData).then((querySnapshot) => {
 			setPosts(querySnapshot.docs.map((doc) => doc.data()));
 		});
-		console.log("aaa");
 	}, []);
 
 	return (
@@ -34,6 +34,7 @@ export const Timeline: FC = () => {
 			{/* 投稿情報 */}
 			{posts.map((post) => (
 				<Post
+					key={uuid()}
 					// ユーザーの表示名
 					displayName={post.displayName}
 					// ユーザー名
