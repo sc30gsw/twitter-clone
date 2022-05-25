@@ -1,17 +1,19 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import "./css/Timeline.css";
 import { Post } from "./Post";
 import { TweetBox } from "./TweetBox";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, DocumentData, getDocs } from "firebase/firestore";
 
 export const Timeline: FC = () => {
+	const [posts, setPosts] = useState<DocumentData[]>([]);
+
 	// dbからpostsテーブルのデータを取得
 	const postData = collection(db, "posts");
 	// querySnapshot内にデータ情報が格納されている
 	// querySnapshot.docsにpostsに格納されているデータをJSONオブジェクト形式で取得できる
 	getDocs(postData).then((querySnapshot) => {
-		console.log(querySnapshot.docs.map((doc) => doc.data()));
+		setPosts(querySnapshot.docs.map((doc) => doc.data()));
 	});
 
 	return (
@@ -25,20 +27,22 @@ export const Timeline: FC = () => {
 			<TweetBox />
 
 			{/* 投稿情報 */}
-			<Post
-				// ユーザーの表示名
-				displayName="プログラミングチュートリアル"
-				// ユーザー名
-				username="Shin_Engineer"
-				// 認証済みかどうか
-				verified={true}
-				// 投稿内容
-				text="初めてのツイート"
-				// ユーザーアイコン
-				avatar="http://shincode.info/wp-content/uploads/2021/12/icon.png"
-				// 投稿画像
-				image="https://source.unsplash.com/random"
-			/>
+			{posts.map((post) => (
+				<Post
+					// ユーザーの表示名
+					displayName={post.displayName}
+					// ユーザー名
+					username={post.username}
+					// 認証済みかどうか
+					verified={post.verified}
+					// 投稿内容
+					text={post.text}
+					// ユーザーアイコン
+					avatar={post.avatar}
+					// 投稿画像
+					image={post.image}
+				/>
+			))}
 		</div>
 	);
 };
