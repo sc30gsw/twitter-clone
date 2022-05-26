@@ -41,12 +41,14 @@ export const TweetBox: FC = () => {
 				<div className="tweetBox_input">
 					<Avatar />
 					<input
+						value={tweetMessage}
 						placeholder="いまどうしてる？"
 						type="text"
 						onChange={(e) => setTweetMessage(e.target.value)}
 					/>
 				</div>
 				<input
+					value={tweetImage}
 					className="tweetBox_imageInput"
 					placeholder="画像のURLを入力してください"
 					type="text"
