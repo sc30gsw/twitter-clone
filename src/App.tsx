@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import "./App.css";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { Timeline } from "./components/timeline/Timeline";
