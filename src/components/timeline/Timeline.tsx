@@ -3,7 +3,13 @@ import "./css/Timeline.css";
 import { Post } from "./Post";
 import { TweetBox } from "./TweetBox";
 import { db } from "../../firebase";
-import { collection, DocumentData, getDocs } from "firebase/firestore";
+import {
+	collection,
+	DocumentData,
+	getDocs,
+	orderBy,
+	query,
+} from "firebase/firestore";
 import { v4 as uuid } from "uuid";
 
 export const Timeline: FC = () => {
@@ -14,9 +20,12 @@ export const Timeline: FC = () => {
 	useEffect(() => {
 		// dbからpostsテーブルのデータを取得
 		const postData = collection(db, "posts");
+
+		// dbから取得したデータをtimestamp(降順)で並び替える
+		const latestPostData = query(postData, orderBy("timestamp", "desc"));
 		// querySnapshot内にデータ情報が格納されている
 		// querySnapshot.docsにpostsに格納されているデータをJSONオブジェクト形式で取得できる
-		getDocs(postData).then((querySnapshot) => {
+		getDocs(latestPostData).then((querySnapshot) => {
 			setPosts(querySnapshot.docs.map((doc) => doc.data()));
 		});
 	}, []);
