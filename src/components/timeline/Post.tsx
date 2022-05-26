@@ -36,8 +36,8 @@ export const Post: FC<{
 						<p>{text}</p>
 					</div>
 				</div>
-				{/* imageがnullでなければ表示する */}
-				{image !== null && <img src={image} alt="画像" />}
+				{/* imageが空でなければ表示する */}
+				{image !== "" && <img src={image} alt="画像" />}
 				<div className="post_footer">
 					{/* コメントアイコン */}
 					<ChatBubbleOutline fontSize="small" />

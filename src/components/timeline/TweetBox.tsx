@@ -6,9 +6,9 @@ import { collection, addDoc } from "firebase/firestore";
 
 export const TweetBox: FC = () => {
 	// ツイートのテキストを管理するState
-	const [tweetMessage, setTweetMessage] = useState<string>();
+	const [tweetMessage, setTweetMessage] = useState<string>("");
 	// ツイートの画像URLを管理するState
-	const [tweetImage, setTweetImage] = useState<string | null>();
+	const [tweetImage, setTweetImage] = useState<string>("");
 
 	/**
 	 * ボタン押下時にツイートをFirebaseDBに登録する処理
@@ -27,8 +27,12 @@ export const TweetBox: FC = () => {
 			text: tweetMessage,
 			avatar: "http://shincode.info/wp-content/uploads/2021/12/icon.png",
 			// imageURLが入力されなければnull値でデータを追加する
-			image: tweetImage || null,
+			image: tweetImage,
 		});
+
+		// 投稿が完了したら、textとimageの入力欄を空にする
+		setTweetMessage("");
+		setTweetImage("");
 	};
 
 	return (
