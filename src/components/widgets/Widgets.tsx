@@ -1,5 +1,5 @@
 import Search from "@mui/icons-material/Search";
-import React from "react";
+import React, { FC } from "react";
 import {
 	TwitterTimelineEmbed,
 	TwitterShareButton,
@@ -7,7 +7,7 @@ import {
 } from "react-twitter-embed";
 import "./css/Widgets.css";
 
-export const Widgets = () => {
+export const Widgets: FC = () => {
 	return (
 		<div className="widgets">
 			<div className="widgets_input">

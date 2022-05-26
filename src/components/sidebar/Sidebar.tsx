@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { SidebarOption } from "./SidebarOption";
 import HomeIcon from "@mui/icons-material/Home";
@@ -13,20 +13,30 @@ import { Button } from "@mui/material";
 import "./css/Sidebar.css";
 
 export const Sidebar: FC = () => {
+	const [isActive, setIsActive] = useState<boolean>(true);
+
 	return (
 		<div className="sidebar">
 			{/* ツイッターアイコン */}
 			<TwitterIcon className="sidebar_twitterIcon" />
 
 			{/* サイドバーオプション */}
-			<SidebarOption text="ホーム" Icon={HomeIcon} />
-			<SidebarOption text="話題を検索" Icon={SearchIcon} />
-			<SidebarOption text="通知" Icon={NotificationsNoneIcon} />
-			<SidebarOption text="メッセージ" Icon={MailOutlineIcon} />
-			<SidebarOption text="ブックマーク" Icon={BookmarkBorderIcon} />
-			<SidebarOption text="リスト" Icon={ListAltIcon} />
-			<SidebarOption text="プロフィール" Icon={PermIdentityIcon} />
-			<SidebarOption text="もっとみる" Icon={MoreHorizIcon} />
+			<SidebarOption text="ホーム" Icon={HomeIcon} active={isActive} />
+			<SidebarOption text="話題を検索" Icon={SearchIcon} active={false} />
+			<SidebarOption text="通知" Icon={NotificationsNoneIcon} active={false} />
+			<SidebarOption text="メッセージ" Icon={MailOutlineIcon} active={false} />
+			<SidebarOption
+				text="ブックマーク"
+				Icon={BookmarkBorderIcon}
+				active={false}
+			/>
+			<SidebarOption text="リスト" Icon={ListAltIcon} active={false} />
+			<SidebarOption
+				text="プロフィール"
+				Icon={PermIdentityIcon}
+				active={false}
+			/>
+			<SidebarOption text="もっとみる" Icon={MoreHorizIcon} active={false} />
 
 			{/* ツイートボタン */}
 			{/* fullWidth: 親要素に対して100%の幅となる */}

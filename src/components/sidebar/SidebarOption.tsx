@@ -6,9 +6,10 @@ import "./css/SidebarOption.css";
 export const SidebarOption: FC<{
 	text: string;
 	Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>;
-}> = ({ text, Icon }) => {
+	active: boolean;
+}> = ({ text, Icon, active }) => {
 	return (
-		<div className="sidebarOption">
+		<div className={`sidebarOption ${active && "sidebarOption_active"}`}>
 			<Icon />
 			<h2>{text}</h2>
 		</div>

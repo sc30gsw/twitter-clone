@@ -19,7 +19,7 @@ p {
 
 .post_headerText > h3 {
 	font-size: 15px;
-	margin-bottom: 5px;
+	margin: 15px 0 5px;
 }
 
 .post_headerSpecial {
@@ -29,7 +29,7 @@ p {
 }
 
 .post_badge {
-	font-size: 14px;
+	font-size: 14px !important;
 	color: var(--twitter-color);
 }
 
