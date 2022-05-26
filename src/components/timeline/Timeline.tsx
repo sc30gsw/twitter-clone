@@ -7,8 +7,10 @@ import {
 	collection,
 	DocumentData,
 	getDocs,
+	onSnapshot,
 	orderBy,
 	query,
+	QuerySnapshot,
 } from "firebase/firestore";
 import { v4 as uuid } from "uuid";
 
@@ -23,9 +25,11 @@ export const Timeline: FC = () => {
 
 		// dbから取得したデータをtimestamp(降順)で並び替える
 		const latestPostData = query(postData, orderBy("timestamp", "desc"));
+
 		// querySnapshot内にデータ情報が格納されている
 		// querySnapshot.docsにpostsに格納されているデータをJSONオブジェクト形式で取得できる
-		getDocs(latestPostData).then((querySnapshot) => {
+		// リアルタイムでデータを取得する
+		onSnapshot(latestPostData, (querySnapshot) => {
 			setPosts(querySnapshot.docs.map((doc) => doc.data()));
 		});
 	}, []);
