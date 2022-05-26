@@ -6,13 +6,12 @@ import { db } from "../../firebase";
 import {
 	collection,
 	DocumentData,
-	getDocs,
 	onSnapshot,
 	orderBy,
 	query,
-	QuerySnapshot,
 } from "firebase/firestore";
 import { v4 as uuid } from "uuid";
+import FlipMove from "react-flip-move";
 
 export const Timeline: FC = () => {
 	// 投稿情報を管理するState
@@ -45,23 +44,26 @@ export const Timeline: FC = () => {
 			<TweetBox />
 
 			{/* 投稿情報 */}
-			{posts.map((post) => (
-				<Post
-					key={uuid()}
-					// ユーザーの表示名
-					displayName={post.displayName}
-					// ユーザー名
-					username={post.username}
-					// 認証済みかどうか
-					verified={post.verified}
-					// 投稿内容
-					text={post.text}
-					// ユーザーアイコン
-					avatar={post.avatar}
-					// 投稿画像
-					image={post.image}
-				/>
-			))}
+			{/* 投稿をなめらかに表示できるようにする */}
+			<FlipMove>
+				{posts.map((post) => (
+					<Post
+						key={uuid()}
+						// ユーザーの表示名
+						displayName={post.displayName}
+						// ユーザー名
+						username={post.username}
+						// 認証済みかどうか
+						verified={post.verified}
+						// 投稿内容
+						text={post.text}
+						// ユーザーアイコン
+						avatar={post.avatar}
+						// 投稿画像
+						image={post.image}
+					/>
+				))}
+			</FlipMove>
 		</div>
 	);
 };
