@@ -2,12 +2,12 @@ import { Avatar, Button } from "@mui/material";
 import React, { FC, useState } from "react";
 import "./css/TweetBox.css";
 import { db } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export const TweetBox: FC = () => {
-	// ツイートのテキストを管理するState
+	// ツイートのテキストを管理するState(初期値: 空)
 	const [tweetMessage, setTweetMessage] = useState<string>("");
-	// ツイートの画像URLを管理するState
+	// ツイートの画像URLを管理するState(初期値: 空)
 	const [tweetImage, setTweetImage] = useState<string>("");
 
 	/**
@@ -26,8 +26,8 @@ export const TweetBox: FC = () => {
 			verified: true,
 			text: tweetMessage,
 			avatar: "http://shincode.info/wp-content/uploads/2021/12/icon.png",
-			// imageURLが入力されなければnull値でデータを追加する
 			image: tweetImage,
+			timestamp: serverTimestamp(),
 		});
 
 		// 投稿が完了したら、textとimageの入力欄を空にする
