@@ -8,6 +8,7 @@ import {
 import { Avatar } from "@mui/material";
 import React, { FC, forwardRef, LegacyRef } from "react";
 import "./css/Post.css";
+import ProfileImage from "../../images/icon.png";
 
 export const Post: FC<{
 	displayName: string;
@@ -24,7 +25,7 @@ export const Post: FC<{
 		return (
 			<div className="post" ref={ref}>
 				<div className="post_avatar">
-					<Avatar src={avatar} />
+					<Avatar src={ProfileImage} />
 				</div>
 				<div className="post_body">
 					<div className="post_header">
